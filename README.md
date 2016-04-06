@@ -10,7 +10,7 @@ Voting System
 # Authors
 
 * Jose Labra
-
+* Katia Fernández 
 
 
 
