@@ -4,7 +4,7 @@ import main.java.es.uniovi.asw.model.Voter;
 
 public class VoterVerifier {
 	
-	public static void verify(Voter voter){
+	public static void check(Voter voter){
 		
 		if(voter == null){
 			throw new IllegalArgumentException("This voter does not exist");
@@ -18,5 +18,4 @@ public class VoterVerifier {
 			throw new IllegalArgumentException();
 		}
 	}
-
 }
