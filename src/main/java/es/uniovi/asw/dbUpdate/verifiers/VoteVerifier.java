@@ -1,14 +1,15 @@
 package main.java.es.uniovi.asw.dbUpdate.verifiers;
 
-import main.java.es.uniovi.asw.model.Candidate;
+import main.java.es.uniovi.asw.model.Option;
 
 public class VoteVerifier {
 
-	public void check(Candidate candidate) throws IllegalArgumentException{
+	public void check(Option option) throws IllegalArgumentException{
 		
-		if(candidate!=Candidate.Ciudadanos || candidate!= Candidate.PODEMOS 
-				||candidate!=Candidate.PP || candidate!=Candidate.PSOE){
-			throw new IllegalArgumentException("The voted candidate is not allowed in this elections.");
+		if(option!=Option.Ciudadanos || option!= Option.PODEMOS 
+				||option!=Option.PP || option!=Option.PSOE || option!=Option.nulo
+				|| option!=Option.whiteVote){
+			throw new IllegalArgumentException("This vote is not allowed in this elections.");
 		}
 	}
 }

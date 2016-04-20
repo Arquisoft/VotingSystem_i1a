@@ -6,19 +6,18 @@ public class Vote {
 	
 	private boolean counted; 
 	
-	private boolean white;
-	private boolean nulo;
-	private Candidate candidate;
+	private Option option;
 	
 	private VotingPlace votingPlace;
 
-	public Vote(Long id, boolean counted, boolean white, boolean nulo,
-			Candidate candidate, VotingPlace votingPlace) {
+	public Vote(){
+		
+	}
+	
+	public Vote(Long id, boolean counted, Option option, VotingPlace votingPlace) {
 		this.id = id;
 		this.counted = counted;
-		this.white = white;
-		this.nulo = nulo;
-		this.candidate = candidate;
+		this.option = option;
 		this.votingPlace = votingPlace;
 	}
 
@@ -30,28 +29,12 @@ public class Vote {
 		this.counted = counted;
 	}
 
-	public boolean isWhite() {
-		return white;
+	public Option getOption() {
+		return option;
 	}
 
-	public void setWhite(boolean white) {
-		this.white = white;
-	}
-
-	public boolean isNulo() {
-		return nulo;
-	}
-
-	public void setNulo(boolean nulo) {
-		this.nulo = nulo;
-	}
-
-	public Candidate getCandidate() {
-		return candidate;
-	}
-
-	public void setCandidate(Candidate candidate) {
-		this.candidate = candidate;
+	public void setOption(Option option) {
+		this.option = option;
 	}
 
 	public VotingPlace getVotingPlace() {
@@ -72,8 +55,9 @@ public class Vote {
 		int result = 1;
 		result = prime * result + (counted ? 1231 : 1237);
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + (nulo ? 1231 : 1237);
-		result = prime * result + (white ? 1231 : 1237);
+		result = prime * result + ((option == null) ? 0 : option.hashCode());
+		result = prime * result
+				+ ((votingPlace == null) ? 0 : votingPlace.hashCode());
 		return result;
 	}
 
@@ -93,16 +77,20 @@ public class Vote {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (nulo != other.nulo)
+		if (option != other.option)
 			return false;
-		if (white != other.white)
+		if (votingPlace == null) {
+			if (other.votingPlace != null)
+				return false;
+		} else if (!votingPlace.equals(other.votingPlace))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Vote [id=" + id + ", counted=" + counted + ", white=" + white
-				+ ", nulo=" + nulo + "]";
+		return "Vote [id=" + id + ", counted=" + counted + ", option=" + option
+				+ ", votingPlace=" + votingPlace + "]";
 	}
+
 }
