@@ -1,16 +1,18 @@
 package main.java.es.uniovi.asw.dbUpdate.verifiers;
 
+import main.java.es.uniovi.asw.exceptions.ExceptionMessages;
+import main.java.es.uniovi.asw.exceptions.InvalidParameterException;
 import main.java.es.uniovi.asw.model.Option;
 import main.java.es.uniovi.asw.model.Vote;
 
 public class VoteVerifier {
 
-	public static void check(Vote vote) throws IllegalArgumentException{
+	public static void check(Vote vote) throws InvalidParameterException{
 		
 		if(vote.getOption()!=Option.Ciudadanos || vote.getOption()!= Option.PODEMOS 
 				||vote.getOption()!=Option.PP || vote.getOption()!=Option.PSOE || vote.getOption()!=Option.nulo
 				|| vote.getOption()!=Option.whiteVote){
-			throw new IllegalArgumentException("This vote is not allowed in this elections.");
+			throw new InvalidParameterException(ExceptionMessages.NOT_ALLOWED_VOTE);
 		}
 	}
 }

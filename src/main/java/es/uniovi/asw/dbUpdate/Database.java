@@ -8,12 +8,13 @@ import java.sql.SQLException;
 
 import main.java.es.uniovi.asw.dbUpdate.verifiers.VoteVerifier;
 import main.java.es.uniovi.asw.dbUpdate.verifiers.VoterVerifier;
+import main.java.es.uniovi.asw.exceptions.InvalidParameterException;
 import main.java.es.uniovi.asw.model.Vote;
 import main.java.es.uniovi.asw.model.Voter;
 
 public class Database {
 	
-	public Vote insertVote(Vote vote) throws SQLException {
+	public Vote insertVote(Vote vote) throws SQLException, InvalidParameterException {
 		
 		//DriverManager = "org.hsqldb.jdbcDriver";
 		
@@ -78,7 +79,7 @@ public class Database {
 		return voter;
 	}
 	
-	public Voter updateHasVoted(Voter voter) throws SQLException {
+	public Voter updateHasVoted(Voter voter) throws SQLException, InvalidParameterException {
 		
 		//DriverManager = "org.hsqldb.jdbcDriver";
 		String url = "jdbc:hsqldb:file:src/main/resources/database/db";
@@ -110,7 +111,7 @@ public class Database {
 		return voter;
 	}
 	
-	public Voter addNewEVoter(Voter voter) throws SQLException{
+	public Voter addNewEVoter(Voter voter) throws SQLException, InvalidParameterException{
 		
 		//DriverManager = "org.hsqldb.jdbcDriver";
 		String url = "jdbc:hsqldb:file:src/main/resources/database/db";
