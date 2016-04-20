@@ -25,7 +25,6 @@ public class ExceptionMessages {
 	public static final String ALREADY_EVOTER = "The voter is already e-voter.";
 	
 	public static final String NOT_EVOTER = "You are not an e-voter.";
-
 	
-
+	public final static String HAS_ALREADY_VOTED = "This voter has already voted.";
 }

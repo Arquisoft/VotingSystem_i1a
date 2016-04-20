@@ -1,4 +1,4 @@
-package main.java.es.uniovi.asw.access.eVoter;
+package main.java.es.uniovi.asw.access;
 
 import java.sql.SQLException;
 
@@ -8,24 +8,23 @@ import main.java.es.uniovi.asw.exceptions.ExceptionMessages;
 import main.java.es.uniovi.asw.exceptions.InvalidParameterException;
 import main.java.es.uniovi.asw.model.Voter;
 
-/**
- * Class to register users that can vote online
- * 
- */
-public class Register {
+public class UpdateVoter{
 	
-	public Voter makeEVoter(Voter voter) throws SQLException, InvalidParameterException{
+	public Voter updateVoter(String nif) throws InvalidParameterException, SQLException{
 		
 		Database database = new Database();
 		
+		Voter voter = database.findVoter(nif);
+		
 		VoterVerifier.check(voter);
 		
-		if(voter.isEVoter()){
-			throw new InvalidParameterException(ExceptionMessages.ALREADY_EVOTER);
+		if(voter.isHasVoted()){
+			throw new InvalidParameterException(ExceptionMessages.HAS_ALREADY_VOTED);
 		}
 		
-		voter.setEVoter(true);
-		return database.addNewEVoter(voter);
+		voter.setHasVoted(true);
+		
+		return database.updateHasVoted(voter);
 	}
 
 }

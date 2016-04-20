@@ -1,4 +1,4 @@
-package main.java.es.uniovi.asw.access.eVoter;
+package main.java.es.uniovi.asw.access;
 
 import java.sql.SQLException;
 
@@ -13,7 +13,7 @@ import main.java.es.uniovi.asw.model.Voter;
  * Only for users allowed to vote online
  * 
  */
-public class LogIn {
+public class LogInEV {
 	
 	public void logIn(String nif, String password) throws SQLException, InvalidParameterException{
 		

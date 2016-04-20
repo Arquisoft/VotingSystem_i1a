@@ -14,6 +14,10 @@ public class Vote {
 		
 	}
 	
+	public Vote(Option option){
+		this.option = option;
+	}
+	
 	public Vote(Long id, boolean counted, Option option, VotingPlace votingPlace) {
 		this.id = id;
 		this.counted = counted;
