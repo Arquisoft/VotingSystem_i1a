@@ -4,33 +4,23 @@ public class Vote {
 	
 	private Long id;
 	
-	private boolean counted; 
-	
 	private Option option;
 	
 	private VotingPlace votingPlace;
-
-	public Vote(){
-		
+	
+	public Vote(Long id, Option option){
+		this.id = id;
+		this.option = option;
 	}
 	
 	public Vote(Option option){
 		this.option = option;
 	}
 	
-	public Vote(Long id, boolean counted, Option option, VotingPlace votingPlace) {
+	public Vote(Long id, Option option, VotingPlace votingPlace) {
 		this.id = id;
-		this.counted = counted;
 		this.option = option;
 		this.votingPlace = votingPlace;
-	}
-
-	public boolean isCounted() {
-		return counted;
-	}
-
-	public void setCounted(boolean counted) {
-		this.counted = counted;
 	}
 
 	public String getOptionS() {
@@ -61,7 +51,6 @@ public class Vote {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (counted ? 1231 : 1237);
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((option == null) ? 0 : option.hashCode());
 		result = prime * result
@@ -78,8 +67,6 @@ public class Vote {
 		if (getClass() != obj.getClass())
 			return false;
 		Vote other = (Vote) obj;
-		if (counted != other.counted)
-			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -97,7 +84,7 @@ public class Vote {
 
 	@Override
 	public String toString() {
-		return "Vote [id=" + id + ", counted=" + counted + ", option=" + option
+		return "Vote [id=" + id + ", option=" + option
 				+ ", votingPlace=" + votingPlace + "]";
 	}
 }

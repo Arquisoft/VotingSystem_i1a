@@ -1,5 +1,8 @@
 package main.java.es.uniovi.asw.model;
 
+/**
+ *
+ */
 public class VotingPlace {
 	
 	private Long id;

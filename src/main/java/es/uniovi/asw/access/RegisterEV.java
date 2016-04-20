@@ -18,7 +18,7 @@ public class RegisterEV {
 		
 		Database database = new Database();
 		
-		Voter voter = Database.findVoter(nif);
+		Voter voter = database.findVoter(nif);
 		
 		VoterVerifier.check(voter);
 		

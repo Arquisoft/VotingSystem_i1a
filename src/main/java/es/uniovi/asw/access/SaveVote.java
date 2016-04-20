@@ -7,6 +7,10 @@ import main.java.es.uniovi.asw.exceptions.InvalidParameterException;
 import main.java.es.uniovi.asw.model.Option;
 import main.java.es.uniovi.asw.model.Vote;
 
+/**
+ * Class that stores the votes
+ * 
+ */
 public class SaveVote {
 
 	public void saveVote(Option option) throws SQLException, InvalidParameterException{
