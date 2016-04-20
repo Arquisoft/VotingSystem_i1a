@@ -26,7 +26,14 @@ public class Voter {
 		this.isEVoter = isEVoter;
 	}
 
-
+	public Voter(String nif, String name, String email, String password, boolean hasVoted, boolean isEVoter){
+		this.nif = nif;
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.hasVoted = hasVoted;
+		this.isEVoter = isEVoter;
+	}
 
 	public String getName() {
 		return name;

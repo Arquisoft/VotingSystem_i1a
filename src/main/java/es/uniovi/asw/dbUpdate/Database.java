@@ -3,6 +3,7 @@ package main.java.es.uniovi.asw.dbUpdate;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import main.java.es.uniovi.asw.dbUpdate.verifiers.VoteVerifier;
@@ -10,7 +11,7 @@ import main.java.es.uniovi.asw.dbUpdate.verifiers.VoterVerifier;
 import main.java.es.uniovi.asw.model.Vote;
 import main.java.es.uniovi.asw.model.Voter;
 
-public class DatabaseImpl {
+public class Database {
 	
 	public Vote insertVote(Vote vote) throws SQLException {
 		
@@ -44,7 +45,9 @@ public class DatabaseImpl {
 		return vote;
 	}
 	
-	public Voter findVoter(Voter voter) throws SQLException{
+	public Voter findVoter(String nif) throws SQLException{
+		
+		Voter voter = null;
 		
 		//DriverManager = "org.hsqldb.jdbcDriver";
 		String url = "jdbc:hsqldb:file:src/main/resources/database/db";
@@ -54,25 +57,19 @@ public class DatabaseImpl {
 		Connection conn = null;
 		PreparedStatement stat = null;
 				
-		String query = "SELECT nif, nombre, email, password, hasVoted, "
-				+ "isEVoter FROM voters  WHERE v.nif ='?'";
-	
-		VoterVerifier.check(voter);
+		String query = "SELECT nif, name, email, password, hasVoted, "
+				+ "isEVoter FROM voters  WHERE v.nif =?";
 
 		try {
 			conn = DriverManager.getConnection(url,username, password);
 					
 			stat = conn.prepareStatement(query);
+			ResultSet rs = stat.executeQuery(query);
 			
-			stat.setString(1, voter.getNif());
-			stat.setString(2, voter.getName());
-			stat.setString(3, voter.getEmail());
-			stat.setString(4, voter.getPassword());
-			stat.setBoolean(5, voter.isHasVoted());
-			stat.setBoolean(6, voter.isEVoter());
-			stat.executeUpdate();
-			return voter;
-					
+			while(rs.next()){
+				voter = new Voter(rs.getString(1), rs.getString(2), rs.getString(3), 
+								rs.getString(4), rs.getBoolean(5), rs.getBoolean(6));
+			}	
 		}catch (SQLException e){
 			System.err.print("error connecting \n");
 			e.printStackTrace();
@@ -111,5 +108,37 @@ public class DatabaseImpl {
 		}
 		
 		return voter;
+	}
+	
+	public Voter addNewEVoter(Voter voter) throws SQLException{
+		
+		//DriverManager = "org.hsqldb.jdbcDriver";
+		String url = "jdbc:hsqldb:file:src/main/resources/database/db";
+		String username = "SA";
+		String password = "";
+				
+		Connection conn = null;
+		PreparedStatement stat = null;
+				
+		String query = "UPDATE voters SET isEvoter = ? WHERE nif =?";
+				
+		VoterVerifier.check(voter);
+
+		try {
+			conn = DriverManager.getConnection(url,username, password);
+					
+			stat = conn.prepareStatement(query);
+				
+			stat.setBoolean(1, voter.isEVoter());
+			stat.setString(2, voter.getNif());
+			stat.executeUpdate();
+			return voter;
+					
+		}catch (SQLException e){
+			System.err.print("error connecting \n");
+			e.printStackTrace();
+		}
+				
+		return voter;	
 	}
 }
