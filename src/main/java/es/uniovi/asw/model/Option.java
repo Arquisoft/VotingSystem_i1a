@@ -5,5 +5,5 @@ package main.java.es.uniovi.asw.model;
  *
  */
 public enum Option {
-	PP, PSOE , PODEMOS, Ciudadanos, nulo, whiteVote;
+	Candidate1, Candidate2, Candidate3, Candidate4, nulo, whiteVote;
 }

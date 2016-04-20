@@ -9,8 +9,9 @@ public class VoteVerifier {
 
 	public static void check(Vote vote) throws InvalidParameterException{
 		
-		if(vote.getOption()!=Option.Ciudadanos || vote.getOption()!= Option.PODEMOS 
-				||vote.getOption()!=Option.PP || vote.getOption()!=Option.PSOE || vote.getOption()!=Option.nulo
+		if(vote.getOption()!=Option.Candidate1 || vote.getOption()!= Option.Candidate2 
+				||vote.getOption()!=Option.Candidate3 || vote.getOption()!=Option.Candidate4 
+				|| vote.getOption()!=Option.nulo
 				|| vote.getOption()!=Option.whiteVote){
 			throw new InvalidParameterException(ExceptionMessages.NOT_ALLOWED_VOTE);
 		}
