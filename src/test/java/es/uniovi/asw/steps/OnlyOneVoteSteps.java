@@ -1,4 +1,4 @@
-package es.uniovi.asw.steps;
+package test.java.es.uniovi.asw.steps;
 
 import main.java.es.uniovi.asw.Application;
 import main.java.es.uniovi.asw.access.LogInEV;
@@ -22,11 +22,8 @@ public class OnlyOneVoteSteps {
 		@Value("${local.server.port}")
 		protected int port;
 
-	
-	
 		Object checker;
 	
-	  
 	  @Given("^the user is logged in and checked if he has voted$")
 	  public void the_user_is_logged_in_and_checked_if_has_voted() throws Throwable {
 		 
