@@ -29,8 +29,8 @@ public class Vote {
 		this.counted = counted;
 	}
 
-	public Option getOption() {
-		return option;
+	public String getOption() {
+		return option.toString();
 	}
 
 	public void setOption(Option option) {
