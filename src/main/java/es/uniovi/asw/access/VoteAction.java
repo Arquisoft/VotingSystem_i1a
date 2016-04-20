@@ -9,7 +9,7 @@ import main.java.es.uniovi.asw.model.Voter;
 
 public class VoteAction {
 	
-	public void vote(Voter voter, Vote vote) throws SQLException, InvalidParameterException{
+	public void vote(Vote vote, Voter voter) throws SQLException, InvalidParameterException{
 		
 		Database database = new Database();
 		

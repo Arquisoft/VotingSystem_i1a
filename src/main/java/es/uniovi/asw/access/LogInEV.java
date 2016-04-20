@@ -15,7 +15,7 @@ import main.java.es.uniovi.asw.model.Voter;
  */
 public class LogInEV {
 	
-	public void logIn(String nif, String password) throws SQLException, InvalidParameterException{
+	public Voter logIn(String nif, String password) throws SQLException, InvalidParameterException{
 		
 		Database database = new Database();
 		
@@ -30,5 +30,7 @@ public class LogInEV {
 		if(!voter.getPassword().equals(password)){
 			throw new InvalidParameterException(ExceptionMessages.WRONG_PASSWORD);
 		}
+		
+		return voter;
 	}
 }

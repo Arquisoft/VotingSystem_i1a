@@ -46,7 +46,7 @@ public class Database {
 		return vote;
 	}
 	
-	public Voter findVoter(String nif) throws SQLException{
+	public static Voter findVoter(String nif) throws SQLException{
 		
 		Voter voter = null;
 		

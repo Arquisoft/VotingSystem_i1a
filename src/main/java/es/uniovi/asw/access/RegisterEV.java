@@ -14,9 +14,11 @@ import main.java.es.uniovi.asw.model.Voter;
  */
 public class RegisterEV {
 	
-	public Voter makeEVoter(Voter voter) throws SQLException, InvalidParameterException{
+	public Voter makeEVoter(String nif) throws SQLException, InvalidParameterException{
 		
 		Database database = new Database();
+		
+		Voter voter = Database.findVoter(nif);
 		
 		VoterVerifier.check(voter);
 		
