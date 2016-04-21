@@ -15,7 +15,5 @@ System that manages the elections and allows the users to vote online.
 
 * Jose Labra
 * Katia Fernández 
-* Santiago Barro
-* Marcos Chacón Cadenas
 
 
